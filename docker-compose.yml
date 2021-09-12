@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+  mysql:
+    image: mysql:5.7.35
+    container_name: spring-data-jpa-edu-mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: jpaedu
+      MYSQL_ROOT_PASSWORD: password
+  postgres:
+    image: postgres
+    container_name: spring-data-jpa-edu-postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: jpaedu
+      POSTGRES_PASSWORD: password
