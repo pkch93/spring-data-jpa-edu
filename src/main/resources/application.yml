@@ -1,0 +1,21 @@
+mysql:
+  datasource:
+    config:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/jpaedu?useSSL=false
+      url: jdbc:mysql://localhost:3306/jpaedu?useSSL=false
+      username: root
+      password: password
+      pool-name: mysql-hikari-pool
+      hikari:
+        max-life-time: 5000
+        maximum-pool-size: 50
+
+postgres:
+  datasource:
+    config:
+      driver-class-name: org.postgresql.Driver
+      jdbc-url: jdbc:postgresql://localhost:5432/jpaedu
+      username: postgres
+      password: password
+      pool-name: postgres-hikari-pool
