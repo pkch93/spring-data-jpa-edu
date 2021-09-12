@@ -10,6 +10,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 
+import java.util.Map;
+
 import static edu.pkch.datajpa.config.PostgresEntityManagerConfig.*;
 
 @Configuration
@@ -27,10 +29,13 @@ public class PostgresEntityManagerConfig {
     @Bean(POSTGRES_ENTITY_MANAGER_FACTORY_NAME)
     public LocalContainerEntityManagerFactoryBean postgresEntityManagerFactory(EntityManagerFactoryBuilder entityManagerFactoryBuilder,
                                                                                @Qualifier("postgresDataSource") HikariDataSource postgresDataSource) {
+        Map<String, Object> properties = Map.of("hibernate.hbm2ddl.auto", "create-drop");
+
         return entityManagerFactoryBuilder
                 .dataSource(postgresDataSource)
                 .packages(POSTGRES_ENTITY_BASE_PACKAGES)
                 .persistenceUnit(POSTGRES_PERSISTENCE_UNIT_NAME)
+                .properties(properties)
                 .build();
     }
 
